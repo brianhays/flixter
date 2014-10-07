@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="#">Flixter</a>
+        <%= link_to "Flixter", root_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,12 +28,25 @@
         <li><a href="#">Link</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <% if user_signed_in? %>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
+  <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
 <%= yield %>
 
 </body>
