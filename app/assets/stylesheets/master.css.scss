@@ -2,6 +2,12 @@ h1, h2, h3, h4, h5, h6, .navbar {
   margin:0;
 } 
 
+body {
+  background: url('subtle_white_feathers.png');
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
 .navbar {
   border-radius:0;
   font-family: "Helvetica Neue", Helvetica;
@@ -34,4 +40,12 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
 .btn {
   border-radius:0;
+}
+
+.features {
+	margin-top: 10px;
+}
+
+.features h3 {
+	margin-bottom: 10px;
 }
